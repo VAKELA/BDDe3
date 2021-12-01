@@ -18,6 +18,7 @@ pass varchar(50);
 
 -- definimos nuestra función
 BEGIN  -- 
+    PERFORM dblink('db2','dbname=grupo143 user=grupo143 password=grupo143 port=5432','SELECT * FROM Usuarios');
     id = 147;
     FOR tupla IN (SELECT usuarios.nombre, SUM(horas_juego.horas) AS horas_jugadas, usuarios.id FROM usuarios, horas_juego WHERE usuarios.id = horas_juego.id_usuarios GROUP BY usuarios.id) 
     LOOP
@@ -25,7 +26,7 @@ BEGIN  --
         RandomString = array_to_string(ARRAY(SELECT chr((97 + round(random() * 25)) :: integer) FROM generate_series(1,5)), '');
         pass = horas || RandomString || split_part(tupla.nombre, ' ', 1);
         UPDATE usuarios SET contrasena = substring(pass, 1, 20) WHERE usuarios.id = tupla.id;
-
+    
 
     END LOOP;
 
