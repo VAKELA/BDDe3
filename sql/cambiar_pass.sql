@@ -11,7 +11,7 @@ DECLARE
 
 tupla RECORD;
 usuarios_143 RECORD;
-insert_statement TEXT;
+update_statement TEXT;
 res TEXT;
 esta BOOLEAN;
 
@@ -22,15 +22,11 @@ esta BOOLEAN;
 BEGIN  -- 
     PERFORM dblink_connect('db2','dbname=grupo143 user=grupo143 password=grupo143');
     esta = false;
-    SELECT * INTO usuario_143 FROM dblink('dbname=grupo143 user=grupo143 password=grupo143 port=5432', 'SELECT password FROM usuarios2 WHERE id = '||id||'') AS f(pass_usuario varchar)) 
+    SELECT * INTO usuarios_143 FROM dblink('dbname=grupo143 user=grupo143 password=grupo143 port=5432', 'SELECT password FROM usuarios2 WHERE id = '||id||'') AS f(pass_usuario varchar);
     IF usuarios_143.pass_usuario = pass THEN
         esta = true;
-        update_statement
-    END IF;
-    IF NOT esta THEN
-        SELECT * INTO tupla FROM dblink('dbname=grupo143 user=grupo143 password=grupo143 port=5432', 'SELECT id FROM usuarios2 ORDER BY id DESC LIMIT 1;') AS f(id int);
-        insert_statement = 'INSERT INTO usuarios2 VALUES ('||tupla.id + 1||','''||new_nombre||''','''||new_mail||''','''||new_pass||''','''||new_username||''')';
-        res := dblink_exec('db2', insert_statement, true);
+        update_statement = 'UPDATE usuarios2 SET password ='''||new_pass||''' WHERE id = '''||id||''';';
+        res := dblink_exec('db2', update_statement, true);
         RAISE INFO '%', res;
     END IF;
 
