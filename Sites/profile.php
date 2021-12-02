@@ -16,7 +16,7 @@ require_once "./__init__.php";
     $query = $db2 -> prepare("SELECT * FROM Usuarios WHERE Usuarios.id = :id;");
     $query -> execute(array(':id' => $id));
     $data = $query -> fetch(PDO::FETCH_ASSOC);
-    $id = 12;
+    //$id = 12;
     $querySUM1 = $db2 -> prepare("SELECT SUM(peliculas.duracion) FROM Usuarios, Visualizaciones_peliculas, peliculas WHERE usuarios.id = Visualizaciones_peliculas.id_usuario AND Visualizaciones_peliculas.id_pelicula = peliculas.id_pelicula AND Usuarios.id = :id;");
     $querySUM2 = $db2 -> prepare("SELECT SUM(capitulos.duracion) FROM Usuarios, Visualizaciones_capitulos, capitulos WHERE usuarios.id = Visualizaciones_capitulos.id_usuario AND Visualizaciones_capitulos.id_capitulo = capitulos.id_capitulo AND Usuarios.id = :id;");
     $querySUM3 = $db -> prepare("SELECT SUM(horas_juego.horas) FROM Usuarios, horas_juego WHERE Usuarios.id = horas_juego.id_usuarios AND Usuarios.id = :id;");
