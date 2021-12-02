@@ -6,3 +6,13 @@
         url("https://i.imgur.com/egt8eZH.jpg");
     background-position: 5% 55%;
 }
+
+.boton-inicio{
+    margin-left: auto;
+    margin-right:auto;
+    text-align: center;
+}
+
+.barra{
+    background-color: aqua;
+}

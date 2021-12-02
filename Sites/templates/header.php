@@ -12,6 +12,11 @@
 </head>
 
 <body>
+<div class = 'boton-inicio barra'> 
+<form class="buttons boton-inicio" action="/~grupo122/index.php">
+      <input class="button boton-inicio" type="submit" value="Volver al inicio">
+</form>
+</div>
   <!-- Aquí se puede añadir contenido de utilidad para la página -->
   <!-- Ver https://bulma.io/documentation/components/navbar/ -->
 
