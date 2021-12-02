@@ -1,7 +1,7 @@
 CREATE OR REPLACE FUNCTION
 
 -- declaramos la función y sus argumentos
-revisar_usuarios(new_nombre varchar, new_mail varchar, new_pass varchar, new_username varchar, OUT guardado boolean)
+revisar_usuarios(new_nombre varchar, new_mail varchar, new_pass varchar, new_username varchar, OUT guardado boolean, OUT id_new int)
     LANGUAGE plpgsql AS $$
 -- declaramos lo que retorna
 
@@ -33,6 +33,9 @@ BEGIN  --
         insert_statement = 'INSERT INTO usuarios VALUES ('||tupla.id + 1||','''||new_nombre||''','''||new_mail||''','''||new_pass||''','''||new_username||''')';
         res := dblink_exec('db2', insert_statement, true);
         RAISE INFO '%', res;
+        id_new = tupla.id + 1;
+    ELSE
+        id_new = 0;
     END IF;
 
 guardado = NOT esta;

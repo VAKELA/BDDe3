@@ -22,10 +22,10 @@ esta BOOLEAN;
 BEGIN  -- 
     PERFORM dblink_connect('db2','dbname=grupo143 user=grupo143 password=grupo143');
     esta = false;
-    SELECT * INTO usuarios_143 FROM dblink('dbname=grupo143 user=grupo143 password=grupo143 port=5432', 'SELECT password FROM usuarios2 WHERE id = '||id||'') AS f(pass_usuario varchar);
+    SELECT * INTO usuarios_143 FROM dblink('dbname=grupo143 user=grupo143 password=grupo143 port=5432', 'SELECT password FROM usuarios WHERE id = '||id||'') AS f(pass_usuario varchar);
     IF usuarios_143.pass_usuario = pass THEN
         esta = true;
-        update_statement = 'UPDATE usuarios2 SET password ='''||new_pass||''' WHERE id = '''||id||''';';
+        update_statement = 'UPDATE usuarios SET password ='''||new_pass||''' WHERE id = '''||id||''';';
         res := dblink_exec('db2', update_statement, true);
         RAISE INFO '%', res;
     END IF;
