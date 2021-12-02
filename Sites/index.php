@@ -4,7 +4,7 @@ require_once "./__init__.php";
 
 <?php include('./templates/header.php'); ?>
 
-<section class="hero is-success is-halfheight pokebaner">
+<section class="hero is-success is-halfheight banner">
   <div class="hero-body">
     <h1 class="title">Series y videojuegos</h1>
   </div>
@@ -14,6 +14,9 @@ require_once "./__init__.php";
   <?php if (isset($_SESSION['user_name'])) { ?>
     <!-- Se muestra un mensaje si hay una sesión de usuario -->
     <h2 class="title is-1"> Hola <?php echo $_SESSION['user_name'] ?></h2>
+    <a href="/~grupo122/profile.php" class="button is-light">
+        Ver perfil
+      </a>
     <form class="buttons" action="/~grupo122/logout.php">
       <input class="button" type="submit" value="Cerrar Sesión">
     </form>

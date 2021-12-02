@@ -18,14 +18,17 @@ if ($request_method  === 'POST') {
   $query -> execute(array(':mail' => $mail, ':pass' => $pass, ':user' => $user, ':nombre' => $nombre));
   $data = $query -> fetch(PDO::FETCH_ASSOC);
 
-  //print_r($data);
+  if($data['guardado'] == 1){
+    $_SESSION['user_id'] = $data['id_new'];
+    $_SESSION['user_name'] = $user;
+  }
 
-  //$user_id = $data[0];
+  //
   //$user_name = $data[1];
 
   // Se guardan estos valores en la sesión
   //$_SESSION['user_id'] = $user_id;
-  //$_SESSION['user_name'] = $user_name;
+  //
 
   // Mandamos al usuario al inicio
   go_home();
