@@ -74,6 +74,12 @@ require_once "./__init__.php";
       </tbody>
     </table>
   </div>
+
+  <div class="buttons">
+      <a href="/~grupo122/one_time_purchases.php" class="button is-light">
+        One time purchases
+      </a>
+  </div>
   
     <?php } else { ?>
     No deberías estar aquí
