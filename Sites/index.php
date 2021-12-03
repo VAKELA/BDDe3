@@ -17,9 +17,12 @@ require_once "./__init__.php";
     <a href="/~grupo122/profile.php" class="button is-light">
         Ver perfil
       </a>
-    <form class="buttons" action="/~grupo122/logout.php">
-      <input class="button" type="submit" value="Cerrar Sesión">
-    </form>
+      <a href="/~grupo122/recomendaciones.php" class="button is-light">
+        Recomiendame una pelicula
+      </a>
+      <form class="buttons" action="/~grupo122/logout.php">
+        <input class="button" type="submit" value="Cerrar Sesión">
+      </form>
   <?php } else { ?>
     <!-- En el caso que no, se muestran los botones para iniciar sesión -->
     <div class="buttons">
@@ -31,7 +34,15 @@ require_once "./__init__.php";
       </a>
     </div>
   <?php } ?>
+      <a href="/~grupo122/proveedores.php" class="button is-light">
+        Ver Proovedores
+      </a>
 </section>
+<?php include './templates/footer.php';?>
 </main>
 
-<?php include('./templates/footer.php'); ?>
+
+
+
+
+
